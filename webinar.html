@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webinar Gratuito — Esto es China</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rojo: #C0181A;
+    --rojo2: #A01215;
+    --negro: #080808;
+    --negro2: #0F0F0F;
+    --blanco: #FFFFFF;
+    --gris: #777777;
+    --dorado: #C9A96E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(192,24,26,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rojo), transparent);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(192,24,26,0.12);
+    border: 1px solid rgba(192,24,26,0.35);
+    padding: 6px 18px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rojo);
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--rojo);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 76px);
+    font-weight: 900;
+    line-height: 1.05;
+    max-width: 860px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-title .accent { color: var(--rojo); font-style: italic; }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.8;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  /* FECHA BOX */
+  .fecha-box {
+    display: flex;
+    gap: 0;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.3s ease both;
+    border: 1px solid rgba(192,24,26,0.3);
+    overflow: hidden;
+  }
+
+  .fecha-item {
+    padding: 16px 28px;
+    text-align: center;
+    background: rgba(192,24,26,0.06);
+    border-right: 1px solid rgba(192,24,26,0.2);
+  }
+
+  .fecha-item:last-child { border-right: none; }
+
+  .fecha-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--rojo);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .fecha-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--blanco);
+  }
+
+  /* TIMER */
+  .timer-wrap {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.35s ease both;
+  }
+
+  .timer-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 64px;
+    background: var(--negro2);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 12px 8px 10px;
+  }
+
+  .timer-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--rojo);
+    line-height: 1;
+  }
+
+  .timer-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-top: 4px;
+  }
+
+  .timer-sep {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: rgba(192,24,26,0.4);
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+
+  /* BOTÓN PRINCIPAL */
+  .btn-cal {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--rojo);
+    color: var(--blanco);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 18px 44px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    animation: fadeUp 0.8s 0.45s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-cal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+
+  .btn-cal:hover::before { transform: translateX(0); }
+  .btn-cal:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(192,24,26,0.4); }
+
+  .cal-icon {
+    width: 18px; height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  .btn-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 12px;
+    letter-spacing: 1px;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  /* SECCIÓN QUÉ VAS A APRENDER */
+  .section {
+    padding: 80px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 9px;
+    letter-spacing: 6px;
+    color: var(--rojo);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--rojo);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 40px;
+  }
+
+  /* TEMAS */
+  .temas { display: flex; flex-direction: column; gap: 0; }
+
+  .tema {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s;
+  }
+
+  .tema:last-child { border-bottom: none; }
+  .tema:hover { padding-left: 8px; }
+
+  .tema-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(192,24,26,0.2);
+    line-height: 1;
+    min-width: 36px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .tema-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .tema-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(192,24,26,0.3), transparent);
+    margin: 0 24px;
+  }
+
+  /* PARA QUIÉN */
+  .para-quien {
+    padding: 80px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .check-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .check-mark {
+    width: 20px; height: 20px;
+    border: 1px solid var(--rojo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .check-mark svg { width: 10px; height: 10px; }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: var(--negro2);
+    border-top: 1px solid rgba(192,24,26,0.2);
+    border-bottom: 1px solid rgba(192,24,26,0.2);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .cta-sub {
+    font-size: 14px;
+    color: var(--gris);
+    margin-bottom: 36px;
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-logo span { color: var(--rojo); }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .footer-link {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover { color: var(--rojo); }
+
+  .footer-copy {
+    font-size: 10px;
+    color: rgba(255,255,255,0.12);
+    letter-spacing: 1px;
+  }
+
+  /* GRATIS TAG */
+  .gratis-tag {
+    display: inline-block;
+    background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--dorado);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    padding: 4px 14px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s 0.55s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .fecha-box { flex-direction: column; }
+    .fecha-item { border-right: none; border-bottom: 1px solid rgba(192,24,26,0.2); }
+    .fecha-item:last-child { border-bottom: none; }
+    .timer-num { font-size: 28px; }
+    .timer-block { min-width: 52px; }
+    .btn-cal { padding: 16px 28px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge"><span class="badge-dot"></span>Webinar gratuito · 9 de mayo 2026</div>
+  <h1 class="hero-title">Cómo importar desde <span class="accent">China</span> sin intermediarios</h1>
+  <p class="hero-sub">Una hora de información real sobre cómo funciona el mercado chino por dentro — sin el paso a paso complicado, sin teoría aburrida.</p>
+
+  <div class="fecha-box">
+    <div class="fecha-item">
+      <div class="fecha-label">Fecha</div>
+      <div class="fecha-val">9 de mayo 2026</div>
+    </div>
+    <div class="fecha-item">
+      <div class="fecha-label">Horario</div>
+      <div class="fecha-val">10:00 AM CST</div>
+    </div>
+    <div class="fecha-item">
+      <div class="fecha-label">Duración</div>
+      <div class="fecha-val">1 hora</div>
+    </div>
+    <div class="fecha-item">
+      <div class="fecha-label">Plataforma</div>
+      <div class="fecha-val">Google Meet</div>
+    </div>
+  </div>
+
+  <div class="timer-wrap">
+    <div class="timer-block"><div class="timer-num" id="t-d">00</div><div class="timer-label">Días</div></div>
+    <div class="timer-sep">:</div>
+    <div class="timer-block"><div class="timer-num" id="t-h">00</div><div class="timer-label">Horas</div></div>
+    <div class="timer-sep">:</div>
+    <div class="timer-block"><div class="timer-num" id="t-m">00</div><div class="timer-label">Min</div></div>
+    <div class="timer-sep">:</div>
+    <div class="timer-block"><div class="timer-num" id="t-s">00</div><div class="timer-label">Seg</div></div>
+  </div>
+
+  <div class="gratis-tag">100% gratuito · Sin tarjeta · Sin compromiso</div>
+
+  <a href="https://calendar.app.google/J6CBxUmd7ZTMgurd9" target="_blank" class="btn-cal">
+    <svg class="cal-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Agregar a mi agenda
+  </a>
+  <div class="btn-note">Se agrega directo a Google Calendar · Reminder automático</div>
+</section>
+
+<!-- QUÉ VAS A APRENDER -->
+<div class="divider"></div>
+<section class="section">
+  <div class="section-tag">Contenido</div>
+  <h2 class="section-title">Lo que vas a aprender en esta hora</h2>
+  <div class="temas">
+    <div class="tema">
+      <div class="tema-num">01</div>
+      <div>
+        <div class="tema-title">Por qué la mayoría pierde dinero importando desde China</div>
+        <div class="tema-desc">Los errores más comunes y cómo evitarlos desde el primer pedido.</div>
+      </div>
+    </div>
+    <div class="tema">
+      <div class="tema-num">02</div>
+      <div>
+        <div class="tema-title">Dónde encontrar proveedores reales más allá de Alibaba</div>
+        <div class="tema-desc">Las plataformas y canales que usan los importadores que saben lo que hacen.</div>
+      </div>
+    </div>
+    <div class="tema">
+      <div class="tema-num">03</div>
+      <div>
+        <div class="tema-title">Cómo empezar con pedidos pequeños sin arriesgar capital</div>
+        <div class="tema-desc">La estrategia para validar un proveedor antes de hacer un pedido grande.</div>
+      </div>
+    </div>
+    <div class="tema">
+      <div class="tema-num">04</div>
+      <div>
+        <div class="tema-title">Cómo negociar sin hablar chino</div>
+        <div class="tema-desc">Lo que necesitas saber para comunicarte y negociar directamente con proveedores.</div>
+      </div>
+    </div>
+    <div class="tema">
+      <div class="tema-num">05</div>
+      <div>
+        <div class="tema-title">Preguntas en vivo</div>
+        <div class="tema-desc">Espacio abierto para resolver dudas específicas de tu negocio o idea.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<div class="divider"></div>
+<section class="para-quien">
+  <div class="section-tag">Para quién es</div>
+  <h2 class="section-title" style="margin-bottom:32px">Este webinar es para ti si...</h2>
+  <div class="check-list">
+    <div class="check-item"><div class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="1,6 4,9 11,2" stroke="#C0181A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Vendes en Amazon, TikTok Shop, Mercado Libre o Facebook Marketplace y quieres mejorar tus márgenes</div>
+    <div class="check-item"><div class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="1,6 4,9 11,2" stroke="#C0181A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Tienes un negocio y compras a distribuidores que ya compraron en China antes que tú</div>
+    <div class="check-item"><div class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="1,6 4,9 11,2" stroke="#C0181A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Quieres empezar a importar pero no sabes por dónde empezar sin perder dinero</div>
+    <div class="check-item"><div class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="1,6 4,9 11,2" stroke="#C0181A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Ya compraste en Alibaba y algo salió mal — quieres entender qué pasó y cómo evitarlo</div>
+    <div class="check-item"><div class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="1,6 4,9 11,2" stroke="#C0181A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Eres hispano en USA, México, España o cualquier parte del mundo y quieres aprovechar el mercado chino</div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <h2 class="cta-title">Es gratis. Es una hora.<br>No tienes nada que perder.</h2>
+  <p class="cta-sub">Agrega el evento a tu agenda ahora y recibe el recordatorio automático<br>el día del webinar.</p>
+  <a href="https://calendar.app.google/J6CBxUmd7ZTMgurd9" target="_blank" class="btn-cal">
+    <svg class="cal-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Agregar a mi agenda — Es gratis
+  </a>
+  <div class="btn-note" style="margin-top:16px">9 de mayo · 10:00 AM CST · Google Meet</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ESTO ES <span>CHINA</span></div>
+  <div class="footer-links">
+    <a href="https://wa.me/524426071976?text=Hola%2C%20quiero%20información%20sobre%20el%20webinar%20gratuito" class="footer-link">WhatsApp</a>
+    <a href="mailto:informes@estoeschina.com" class="footer-link">informes@estoeschina.com</a>
+    <a href="https://instagram.com/estoeschina" class="footer-link">@estoeschina</a>
+  </div>
+  <div class="footer-copy">© 2026 Esto es China · Todos los derechos reservados</div>
+</footer>
+
+<script>
+  const evento = new Date('2026-05-09T10:00:00');
+  function tick() {
+    const diff = evento - new Date();
+    if (diff <= 0) {
+      ['t-d','t-h','t-m','t-s'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    document.getElementById('t-d').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('t-h').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('t-m').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('t-s').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
