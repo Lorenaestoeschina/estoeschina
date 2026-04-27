@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webinar Gratuito — Esto es China</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #080808;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .card {
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C0181A;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #C0181A;
+    animation: blink 1.2s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 7vw, 44px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h1 span { color: #C0181A; }
+
+  .sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .fecha {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .fecha-item {
+    text-align: center;
+  }
+
+  .fecha-label {
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: #C0181A;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .fecha-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    background: #C0181A;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 18px 24px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+  }
+
+  .btn:hover {
+    background: #A01215;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(192,24,26,0.4);
+  }
+
+  .btn-note {
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+  }
+
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .brand span { color: #C0181A; }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="tag"><span class="dot"></span>Webinar gratuito</div>
+
+  <h1>Importa desde <span>China</span> sin intermediarios</h1>
+
+  <p class="sub">Una hora de información real para emprendedores hispanos que quieren comprar directo en China.</p>
+
+  <div class="fecha">
+    <div class="fecha-item">
+      <div class="fecha-label">Fecha</div>
+      <div class="fecha-val">9 de mayo</div>
+    </div>
+    <div class="fecha-item">
+      <div class="fecha-label">Hora</div>
+      <div class="fecha-val">10 AM CST</div>
+    </div>
+    <div class="fecha-item">
+      <div class="fecha-label">Costo</div>
+      <div class="fecha-val">Gratis</div>
+    </div>
+  </div>
+
+  <a href="https://share.hsforms.com/1d3Mdw72-Rr2NnQZD3THl5Quk8aa" class="btn">
+    Aparta mi lugar — Es gratis
+  </a>
+  <div class="btn-note">100% gratuito · Sin tarjeta · Confirmación inmediata</div>
+
+  <div class="divider"></div>
+  <div class="brand">ESTO ES <span>CHINA</span></div>
+
+</div>
+
+</body>
+</html>
