@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esto es China — Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --rojo: #C0181A; --negro: #080808; --negro2: #0F0F0F; --blanco: #FFFFFF; --dorado: #C9A96E; --gris: #666; }
+  body { background: var(--negro); color: var(--blanco); font-family: 'Montserrat', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; }
+  .hero { position: relative; height: 220px; overflow: hidden; background: linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%); }
+
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,8,8,0.2) 0%, rgba(8,8,8,0.95) 100%); }
+  .hero-text { position: absolute; bottom: 28px; left: 0; right: 0; text-align: center; padding: 0 24px; }
+  .hero-eyebrow { font-size: 9px; letter-spacing: 5px; color: var(--rojo); text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; }
+  .hero-title span { color: var(--rojo); }
+  .profile { display: flex; flex-direction: column; align-items: center; padding: 20px 24px 28px; text-align: center; }
+  .live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(192,24,26,0.12); border: 1px solid rgba(192,24,26,0.3); padding: 4px 12px; font-size: 9px; letter-spacing: 2px; color: var(--rojo); text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+  .live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rojo); animation: blink 1.2s ease-in-out infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+  .profile-bio { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 1px; line-height: 1.7; max-width: 300px; }
+  .links { padding: 0 20px 16px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+  .section-label { font-size: 8px; letter-spacing: 4px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; padding: 8px 0 4px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before, .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.06); }
+  .link-btn { display: flex; align-items: center; gap: 14px; padding: 15px 18px; text-decoration: none; color: var(--blanco); border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); transition: all 0.2s; position: relative; overflow: hidden; animation: fadeUp 0.5s ease both; }
+  .link-btn::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--rojo); transform: scaleY(0); transition: transform 0.2s; transform-origin: bottom; }
+  .link-btn:hover { background: rgba(192,24,26,0.07); border-color: rgba(192,24,26,0.25); transform: translateX(3px); }
+  .link-btn:hover::after { transform: scaleY(1); }
+  .link-btn.featured { border-color: rgba(192,24,26,0.4); background: rgba(192,24,26,0.07); }
+  .link-btn.featured::after { transform: scaleY(1); }
+  .link-btn.gold { border-color: rgba(201,169,110,0.25); background: rgba(201,169,110,0.03); }
+  .link-btn.gold::after { background: var(--dorado); transform: scaleY(1); }
+  .link-btn.gold:hover { background: rgba(201,169,110,0.07); border-color: rgba(201,169,110,0.4); }
+  .link-icon { font-size: 18px; flex-shrink: 0; width: 26px; text-align: center; }
+  .link-content { flex: 1; min-width: 0; }
+  .link-tag { font-size: 8px; letter-spacing: 2px; color: var(--rojo); text-transform: uppercase; font-weight: 600; margin-bottom: 2px; }
+  .link-tag.gold-tag { color: var(--dorado); }
+  .link-title { font-size: 13px; font-weight: 500; color: var(--blanco); line-height: 1.35; }
+  .link-price { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 1px; }
+  .link-price.red { color: rgba(192,24,26,0.7); }
+  .link-price.gold-p { color: rgba(201,169,110,0.6); }
+  .link-arrow { font-size: 14px; color: rgba(255,255,255,0.15); flex-shrink: 0; transition: all 0.2s; }
+  .link-btn:hover .link-arrow { color: var(--rojo); transform: translateX(2px); }
+  .link-btn.gold:hover .link-arrow { color: var(--dorado); }
+  .gallery { padding: 20px 20px 0; max-width: 500px; margin: 0 auto; }
+  .gallery-label { font-size: 8px; letter-spacing: 4px; color: rgba(255,255,255,0.15); text-transform: uppercase; text-align: center; margin-bottom: 10px; }
+  .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 80px 80px; gap: 3px; }
+  .gallery-item { overflow: hidden; position: relative; }
+  .gallery-item:first-child { grid-row: 1 / 3; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.45) saturate(0.7); transition: all 0.4s; }
+  .gallery-item:hover img { filter: brightness(0.65) saturate(1); transform: scale(1.06); }
+  .gallery-item .city-tag { position: absolute; bottom: 6px; left: 6px; font-size: 7px; letter-spacing: 2px; color: rgba(255,255,255,0.5); text-transform: uppercase; font-weight: 500; }
+  footer { padding: 28px 24px 36px; text-align: center; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.04); }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 6px; }
+  .footer-logo span { color: var(--rojo); }
+  .footer-copy { font-size: 9px; color: rgba(255,255,255,0.1); letter-spacing: 1px; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .links .link-btn:nth-child(1) { animation-delay: 0.05s; }
+  .links .link-btn:nth-child(2) { animation-delay: 0.1s; }
+  .links .link-btn:nth-child(3) { animation-delay: 0.15s; }
+  .links .link-btn:nth-child(4) { animation-delay: 0.2s; }
+  .links .link-btn:nth-child(5) { animation-delay: 0.25s; }
+  .links .link-btn:nth-child(6) { animation-delay: 0.3s; }
+  .links .link-btn:nth-child(7) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Negocios · China · Hispanos</div>
+    <div class="hero-title">ESTO ES <span>CHINA</span></div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="live-badge"><span class="live-dot"></span>Webinar gratuito · 9 de mayo 2026</div>
+  <div class="profile-bio">Conectamos emprendedores hispanos con el mercado chino 🇨🇳<br>USA · México · Latinoamérica · España</div>
+</div>
+
+<div class="links">
+
+  <a href="https://lorenaestoeschina.github.io/estoeschina/webinar.html" class="link-btn featured">
+    <div class="link-icon">🎯</div>
+    <div class="link-content">
+      <div class="link-tag">Gratis · 9 de mayo · 10 AM CST</div>
+      <div class="link-title">Webinar — Cómo importar desde China sin intermediarios</div>
+      <div class="link-price red">Regístrate gratis →</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+
+  <div class="section-label">Servicios</div>
+
+  <a href="https://wa.me/524426071976?text=Hola%2C%20quiero%20información%20sobre%20las%20sesiones%20privadas%20preparativas" class="link-btn">
+    <div class="link-icon">🎓</div>
+    <div class="link-content">
+      <div class="link-tag">Sesiones privadas preparativas</div>
+      <div class="link-title">Prepárate para importar desde China</div>
+      <div class="link-price">3 sesiones · $297 USD</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+
+  <a href="https://wa.me/524426071976?text=Hola%2C%20quiero%20información%20sobre%20la%20consultoría%20China" class="link-btn">
+    <div class="link-icon">🧭</div>
+    <div class="link-content">
+      <div class="link-tag">Consultoría personalizada</div>
+      <div class="link-title">Estrategia completa para tu negocio con China</div>
+      <div class="link-price">$597 USD</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+
+  <a href="https://wa.me/524426071976?text=Hola%2C%20quiero%20información%20sobre%20la%20gira%20empresarial%20a%20China%20en%20octubre%202026" class="link-btn gold">
+    <div class="link-icon">✈️</div>
+    <div class="link-content">
+      <div class="link-tag gold-tag">China Business Experience · Octubre 2026</div>
+      <div class="link-title">Shenzhen · Guangzhou · Yiwu — 10 días</div>
+      <div class="link-price gold-p">Feria de Canton · Grupos pequeños · $7,500 USD</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+
+  <div class="section-label">Recursos gratis</div>
+
+  <a href="https://share.hsforms.com/1mW1nLyaWQKifmDJUJihzMAuk8aa" class="link-btn">
+    <div class="link-icon">📥</div>
+    <div class="link-content">
+      <div class="link-tag">Descarga gratis</div>
+      <div class="link-title">Temario del seminario</div>
+      <div class="link-price">PDF · Sin costo</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+
+  <div class="section-label">Contacto</div>
+
+  <a href="https://wa.me/524426071976?text=Hola%2C%20quiero%20más%20información%20sobre%20Esto%20es%20China" class="link-btn gold">
+    <div class="link-icon">💬</div>
+    <div class="link-content">
+      <div class="link-tag gold-tag">Respuesta inmediata</div>
+      <div class="link-title">WhatsApp · +52 442 607 1976</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+
+  <a href="mailto:informes@estoeschina.com" class="link-btn">
+    <div class="link-icon">✉️</div>
+    <div class="link-content">
+      <div class="link-tag">Correo</div>
+      <div class="link-title">informes@estoeschina.com</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+
+</div>
+
+
+</div>
+
+<footer>
+  <div class="footer-logo">ESTO ES <span>CHINA</span></div>
+  <div class="footer-copy">© 2026 · informes@estoeschina.com · +52 442 607 1976</div>
+</footer>
+
+</body>
+</html>
