@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MasterClass Gratuita · Importa desde China</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #D02B2B; --red-light: #FF4D4D;
+      --gold: #E8A020; --gold-light: #FFD166;
+      --dark: #0C0C0C; --dark2: #161616; --dark3: #1F1F1F;
+      --white: #FAF8F5; --gray: #777;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--white); }
+    .topbar { background: var(--red); text-align: center; padding: 10px 16px; font-size: 13px; font-weight: 600; }
+    .topbar span { opacity: .8; margin: 0 8px; }
+    .hero { padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: '中'; position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 320px; color: rgba(208,43,43,0.04); pointer-events: none; line-height: 1; }
+    .badge { display: inline-block; background: rgba(208,43,43,0.12); border: 1px solid rgba(208,43,43,0.5); color: #FF7070; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(26px, 6.5vw, 50px); font-weight: 700; line-height: 1.2; max-width: 640px; margin: 0 auto 8px; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero h1 strong { color: var(--red-light); }
+    .hero-sub { font-size: 16px; color: #999; max-width: 460px; margin: 16px auto 36px; line-height: 1.65; }
+    .date-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--dark2); border: 1px solid #2a2a2a; border-radius: 100px; padding: 10px 22px; font-size: 14px; font-weight: 600; margin-bottom: 40px; }
+    .dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 1.5s infinite; flex-shrink: 0; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .countdown-wrap { background: linear-gradient(135deg, rgba(208,43,43,0.1), rgba(232,160,32,0.07)); border: 1px solid rgba(208,43,43,0.2); border-radius: 20px; padding: 28px 20px; max-width: 420px; margin: 0 auto 44px; }
+    .cd-title { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--red-light); font-weight: 700; margin-bottom: 20px; }
+    .countdown { display: flex; justify-content: center; gap: 10px; }
+    .cd-box { background: var(--dark); border: 1px solid #252525; border-radius: 14px; padding: 14px 0; min-width: 72px; display: flex; flex-direction: column; align-items: center; }
+    .cd-num { font-size: 34px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+    .cd-lbl { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); margin-top: 6px; font-weight: 500; }
+    .cta-btn { display: inline-block; background: var(--red); color: #fff; font-size: 16px; font-weight: 700; padding: 18px 48px; border-radius: 100px; border: none; cursor: pointer; text-decoration: none; transition: background .2s, transform .15s; }
+    .cta-btn:hover { background: var(--red-light); transform: translateY(-2px); }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, #2a2a2a, transparent); max-width: 500px; margin: 56px auto; }
+    .section { max-width: 640px; margin: 0 auto; padding: 0 24px 64px; text-align: center; }
+    .section-label { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 12px; }
+    .section h2 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; margin-bottom: 36px; line-height: 1.25; }
+    .cards { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .card { display: flex; gap: 16px; align-items: flex-start; background: var(--dark2); border: 1px solid #222; border-radius: 16px; padding: 20px; transition: border-color .2s; }
+    .card:hover { border-color: rgba(208,43,43,0.35); }
+    .card-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(208,43,43,0.1); border: 1px solid rgba(208,43,43,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .card-body strong { display: block; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .card-body p { font-size: 13px; color: #888; line-height: 1.55; }
+    .proof { background: var(--dark2); border-top: 1px solid #1e1e1e; border-bottom: 1px solid #1e1e1e; padding: 48px 24px; text-align: center; }
+    .proof-inner { max-width: 580px; margin: 0 auto; }
+    .proof h3 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); font-weight: 600; margin-bottom: 28px; }
+    .stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .stat-num { font-size: 36px; font-weight: 700; color: var(--gold); line-height: 1; }
+    .stat-lbl { font-size: 12px; color: #666; margin-top: 4px; }
+    .form-section { padding: 60px 24px 72px; }
+    .form-inner { max-width: 460px; margin: 0 auto; text-align: center; }
+    .form-inner h2 { font-size: clamp(22px, 5vw, 30px); font-weight: 700; margin-bottom: 8px; }
+    .form-inner > p { font-size: 14px; color: #888; margin-bottom: 32px; }
+    .field { margin-bottom: 12px; }
+    .field input { width: 100%; background: var(--dark2); border: 1px solid #2a2a2a; border-radius: 12px; padding: 16px 18px; font-size: 15px; color: var(--white); font-family: 'DM Sans', sans-serif; outline: none; transition: border-color .2s; }
+    .field input::placeholder { color: #555; }
+    .field input:focus { border-color: var(--red); }
+    .field input:disabled { opacity: .5; cursor: not-allowed; }
+    .submit-btn { width: 100%; background: var(--red); color: #fff; font-size: 16px; font-weight: 700; padding: 18px; border-radius: 100px; border: none; cursor: pointer; margin-top: 8px; font-family: 'DM Sans', sans-serif; transition: background .2s, transform .15s; }
+    .submit-btn:hover:not(:disabled) { background: var(--red-light); transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .form-note { font-size: 12px; color: #555; margin-top: 14px; }
+    .success-msg { display: none; background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.3); border-radius: 16px; padding: 24px; margin-top: 20px; }
+    .success-msg.show { display: block; }
+    .success-msg h3 { color: #4ade80; font-size: 18px; margin-bottom: 8px; }
+    .success-msg p { font-size: 14px; color: #888; }
+    .error-msg { font-size: 13px; color: #FF7070; margin-top: 10px; display: none; }
+    .error-msg.show { display: block; }
+    footer { text-align: center; padding: 24px; font-size: 12px; color: #3a3a3a; border-top: 1px solid #181818; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  🇨🇳 MasterClass Gratuita <span>·</span> Cupos limitados <span>·</span> Regístrate hoy
+</div>
+
+<section class="hero">
+  <div class="badge">100% Gratuita · Online · En vivo</div>
+  <h1>Cómo <em>Importar desde China</em> y construir un negocio <strong>rentable</strong> desde cero</h1>
+  <p class="hero-sub">En 2 horas aprenderás el sistema exacto para encontrar proveedores, negociar precios y traer productos sin morir en el intento.</p>
+  <div class="date-pill">
+    <span class="dot"></span>
+    Sábado 10 de mayo · 9:00 AM (CDMX)
+  </div>
+  <div class="countdown-wrap">
+    <div class="cd-title">⏳ El evento empieza en</div>
+    <div class="countdown">
+      <div class="cd-box"><span class="cd-num" id="days">07</span><span class="cd-lbl">Días</span></div>
+      <div class="cd-box"><span class="cd-num" id="hours">20</span><span class="cd-lbl">Horas</span></div>
+      <div class="cd-box"><span class="cd-num" id="mins">30</span><span class="cd-lbl">Min</span></div>
+      <div class="cd-box"><span class="cd-num" id="secs">00</span><span class="cd-lbl">Seg</span></div>
+    </div>
+  </div>
+  <a href="#registro" class="cta-btn">→ Reservar mi lugar gratis</a>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Lo que aprenderás</div>
+  <h2>3 claves para importar con éxito desde China</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🏭</div>
+      <div class="card-body">
+        <strong>Cómo encontrar proveedores reales y confiables</strong>
+        <p>Alibaba, 1688, Canton Fair — qué plataformas usar, cómo verificar que no te estafan y cómo pedir muestras sin arriesgar tu dinero.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <div class="card-body">
+        <strong>Cómo negociar precios como un experto</strong>
+        <p>Las frases exactas, los tiempos correctos y los errores que hacen que te cobren el doble. Negocia aunque no hables chino ni inglés fluido.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <div class="card-body">
+        <strong>Logística, aduanas y cómo traer tu mercancía</strong>
+        <p>Marítimo vs aéreo, Incoterms, agentes aduanales y cómo calcular el costo real de importar para que tu margen tenga sentido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div class="proof-inner">
+    <h3>Números que hablan</h3>
+    <div class="stats">
+      <div><div class="stat-num">+2,400</div><div class="stat-lbl">Alumnos formados</div></div>
+      <div><div class="stat-num">$0</div><div class="stat-lbl">Costo de la MasterClass</div></div>
+      <div><div class="stat-num">2 hrs</div><div class="stat-lbl">De contenido práctico</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="form-section" id="registro">
+  <div class="form-inner">
+    <div class="section-label">Regístrate ahora</div>
+    <h2>Asegura tu lugar — es gratis</h2>
+    <p>Cupos limitados. Recibirás el enlace directo en tu correo.</p>
+
+    <div id="form-fields">
+      <div class="field"><input type="text" id="nombre" placeholder="Tu nombre completo" required /></div>
+      <div class="field"><input type="email" id="correo" placeholder="Tu correo electrónico" required /></div>
+      <div class="field"><input type="tel" id="telefono" placeholder="WhatsApp (para enviarte recordatorio)" /></div>
+      <button class="submit-btn" id="submit-btn" onclick="enviarRegistro()">→ Quiero mi lugar gratis</button>
+      <div class="error-msg" id="error-msg">Hubo un problema. Por favor intenta de nuevo.</div>
+    </div>
+
+    <div class="success-msg" id="success-msg">
+      <h3>🎉 ¡Ya estás registrado!</h3>
+      <p>Revisa tu correo — te enviaremos el enlace de acceso 24 horas antes del evento.</p>
+    </div>
+
+    <p class="form-note">🔒 Sin spam. Tu información está 100% segura.</p>
+  </div>
+</section>
+
+<footer>© 2026 · MasterClass Importación China · Todos los derechos reservados</footer>
+
+<script>
+  // ─────────────────────────────────────────────
+  // 👉 PEGA AQUÍ la URL de tu Google Apps Script
+  // ─────────────────────────────────────────────
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeVxKzqIQHou_LSWPQhDrxgEwn0vA01_g1B5DKiV-OVTQd9a0QLeWHfwOW-ODGPpu0/exec';
+
+  // Countdown
+  const target = new Date('2026-05-10T09:00:00');
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    const diff = target - new Date();
+    if(diff <= 0){ ['days','hours','mins','secs'].forEach(id=>document.getElementById(id).textContent='00'); return; }
+    document.getElementById('days').textContent  = pad(Math.floor(diff/86400000));
+    document.getElementById('hours').textContent = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('mins').textContent  = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('secs').textContent  = pad(Math.floor((diff%60000)/1000));
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'}); });
+  });
+
+  // Enviar registro a Google Sheets
+  async function enviarRegistro() {
+    const nombre   = document.getElementById('nombre').value.trim();
+    const correo   = document.getElementById('correo').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const btn      = document.getElementById('submit-btn');
+    const errMsg   = document.getElementById('error-msg');
+
+    if (!nombre || !correo) {
+      errMsg.textContent = 'Por favor llena tu nombre y correo.';
+      errMsg.classList.add('show'); return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    errMsg.classList.remove('show');
+
+    const params = new URLSearchParams({ nombre, correo, telefono, fecha: new Date().toLocaleString('es-MX') });
+
+    try {
+      await fetch(APPS_SCRIPT_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' });
+      document.getElementById('form-fields').style.display = 'none';
+      document.getElementById('success-msg').classList.add('show');
+    } catch(e) {
+      btn.disabled = false;
+      btn.textContent = '→ Quiero mi lugar gratis';
+      errMsg.textContent = 'Error de conexión. Intenta de nuevo.';
+      errMsg.classList.add('show');
+    }
+  }
+</script>
+
+<!--
+==============================================
+CÓDIGO PARA GOOGLE APPS SCRIPT
+==============================================
+1. Abre tu Google Sheet
+2. Extensiones → Apps Script
+3. Borra todo el código y pega esto:
+
+function doGet(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const { nombre, correo, telefono, fecha } = e.parameter;
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['Nombre', 'Correo', 'Teléfono', 'Fecha']);
+  }
+
+  sheet.appendRow([nombre, correo, telefono || '', fecha || new Date().toLocaleString()]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ resultado: 'ok' }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+4. Guarda (Ctrl+S)
+5. Implementar → Nueva implementación
+   - Tipo: Aplicación web
+   - Ejecutar como: Yo
+   - Acceso: Cualquier usuario
+6. Copia la URL y pégala en APPS_SCRIPT_URL arriba
+==============================================
+-->
+</body>
+</html>
